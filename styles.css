@@ -335,9 +335,22 @@ figure.single figcaption {
 }
 
 .pdf-fallback {
-  font-size: 0.9rem;
-  margin-bottom: 1.5em;
+  display: none;
+  margin: 0 0 1.5em;
 }
+
+.pdf-fallback a {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  padding: 10px 16px;
+  text-decoration: none;
+}
+
+.pdf-fallback a:hover { border-color: var(--accent); }
 
 /* Testimonials */
 .testimonials {
@@ -503,4 +516,11 @@ figure.single figcaption {
   .gallery--three { grid-template-columns: 1fr; }
   .hero { padding-top: 32px; }
   .hero h1 { font-size: 1.7rem; }
+}
+
+@media (max-width: 700px) {
+  /* mobile browsers claim to support inline PDFs but often render the
+     object as a blank box instead of falling back to its child content */
+  .pdf-embed { display: none; }
+  .pdf-fallback { display: block; }
 }
